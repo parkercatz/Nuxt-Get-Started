@@ -4,12 +4,32 @@
       <Logo />
       <h1 class="title">nuxt-get-started</h1>
       <nuxt-link to="/about">About</nuxt-link>
+      <p v-if="$fetchState.pending">Fetching planets....</p>
+      <ul v-else>
+        <li>
+          <nuxt-link to="/nuxt">Nuxt</nuxt-link>
+        </li>
+        <li v-for="planet in planets" :key="planet.slug">
+          <nuxt-link :to="planet.slug">{{ planet.title }}</nuxt-link>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      planets: [],
+    }
+  },
+  async fetch() {
+    this.planets = await fetch('https://api.nuxtjs.dev/planets').then((res) =>
+      res.json()
+    )
+  },
+}
 </script>
 
 <style>
