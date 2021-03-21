@@ -3,7 +3,6 @@
     <div>
       <Logo />
       <h1 class="title">nuxt-get-started</h1>
-      <nuxt-link to="/about">About</nuxt-link>
       <p v-if="$fetchState.pending">Fetching planets....</p>
       <ul v-else>
         <li>
@@ -19,6 +18,7 @@
 
 <script>
 export default {
+  layout: 'home',
   data() {
     return {
       planets: [],
