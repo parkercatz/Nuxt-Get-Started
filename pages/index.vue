@@ -3,10 +3,28 @@
     <div>
       <Logo />
       <h1 class="title">nuxt-get-started</h1>
-      <planets-list />
+      <button @click="showPlanets">Show Planets</button>
+      <div v-if="show">
+        <planets-list />
+      </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      show: false,
+    }
+  },
+  methods: {
+    showPlanets() {
+      this.show = true
+    },
+  },
+}
+</script>
 
 <style>
 .container {
