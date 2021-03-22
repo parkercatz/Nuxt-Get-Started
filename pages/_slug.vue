@@ -20,6 +20,18 @@ export default {
     })
     return { planet }
   },
+  head() {
+    return {
+      title: this.planet.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.planet.description,
+        },
+      ],
+    }
+  },
 }
 </script>
 
